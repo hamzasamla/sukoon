@@ -1,9 +1,10 @@
-const dotenv = require("dotenv");  // ✅ Use require() instead of import
-dotenv.config();
+import express from "express";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+import authRoutes from "./routes/auth.js";
+import cors from "cors";
 
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -13,7 +14,9 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json()); //Parse JSON request bodies
 app.use(cors()); //Enable CORS for all requests
 
-const mongoDBConnString = process.env.MONGO_URI;
+// Routes
+app.use("/api/auth", authRoutes);
+
 
 //Connect to MongoDB
 mongoose
