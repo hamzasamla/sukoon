@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import authRoutes from "./routes/auth.js";
+import authRoutes from "./routes/authRoutes.js";
 import cors from "cors";
 
 dotenv.config();
@@ -26,13 +26,8 @@ mongoose
                 console.log("MongoDB Connection Error: ",err)
             });
 
-// Sample Route
-app.get('/', (req, res) => {
-    res.send('Sukoon API is running....🎉');
-});
 
 // Start the server
-
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT} 🚀`);
+     console.log(`Server is running on http://localhost:${PORT} 🚀`);
 });
